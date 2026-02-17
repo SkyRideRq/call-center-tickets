@@ -1,0 +1,66 @@
+// ============================================
+// TICKET INFO PANEL
+// ============================================
+
+@use '../../variables' as *;
+
+.ticket-info {
+  background: $white;
+  padding: $spacing-lg;
+  margin-bottom: 0;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+  
+
+  @media (min-width: $desktop) {
+    margin-bottom: $spacing-lg;
+    padding: $spacing-xl;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 2px solid $gray-100;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-md 0;
+    border-bottom: 1px solid $gray-100;
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    svg {
+      color: $gray-400;
+      flex-shrink: 0;
+    }
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    color: $gray-500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: $spacing-xs;
+    display: block;
+  }
+
+  &__value {
+    font-size: 0.9375rem;
+    color: $gray-900;
+    font-weight: 500;
+  }
+}

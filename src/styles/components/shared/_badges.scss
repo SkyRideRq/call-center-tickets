@@ -1,0 +1,53 @@
+// ============================================
+// SHARED - BADGES
+// ============================================
+
+@use '../../variables' as *;
+
+// Status Badge
+.status-badge {
+  padding: $spacing-xs $spacing-md;
+  border-radius: $radius-full;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  &--new {
+    background: rgba($status-new, 0.1);
+    color: $status-new;
+  }
+
+  &--in-progress {
+    background: rgba($status-in-progress, 0.1);
+    color: $status-in-progress;
+  }
+
+  &--closed {
+    background: rgba($status-closed, 0.1);
+    color: $status-closed;
+  }
+}
+
+// Priority Badge
+.priority-badge {
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  &--low {
+    background: rgba($priority-low, 0.1);
+    color: $priority-low;
+  }
+
+  &--medium {
+    background: rgba($priority-medium, 0.1);
+    color: $priority-medium;
+  }
+
+  &--high {
+    background: rgba($priority-high, 0.1);
+    color: $priority-high;
+  }
+}

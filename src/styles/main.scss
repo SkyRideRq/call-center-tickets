@@ -1,0 +1,166 @@
+// ============================================
+// IMPORTS
+// ============================================
+
+@use './variables' as *;
+@use './animations';
+@use './components/shared/badges';
+@use './components/shared/loader';
+@use './components/shared/select';
+@use './components/ticket-list/index' as ticketList;
+@use './components/ticket-details/index' as ticketDetails;
+
+// ============================================
+// RESET & BASE
+// ============================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  color: $gray-900;
+  background: linear-gradient(135deg, #F9FAFB 0%, #E5E7EB 100%);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+// ============================================
+// APP LAYOUT
+// ============================================
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    background: $white;
+    border-bottom: 1px solid $gray-200;
+    box-shadow: $shadow-sm;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  &__header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-lg 0;
+  }
+  
+  &__logo-link {
+    text-decoration: none;
+  }
+
+   &__main {
+    flex: 1;
+    padding: $spacing-2xl 0;
+  }
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__nav {
+    display: flex;
+    gap: $spacing-md;
+  }
+
+  &__nav-link {
+    padding: $spacing-sm $spacing-lg;
+    border-radius: $radius-md;
+    text-decoration: none;
+    color: $gray-700;
+    font-weight: 500;
+    transition: all $transition-base;
+
+    &:hover {
+      background: $gray-100;
+      color: $primary;
+    }
+
+    &.router-link-active {
+      background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+      color: $white;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    padding: $spacing-2xl 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+}
+
+// ============================================
+// TRANSITIONS
+// ============================================
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity $transition-base, transform $transition-base;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.ticket-list-enter-active,
+.ticket-list-leave-active {
+  transition: all $transition-base;
+}
+
+.ticket-list-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ticket-list-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.success-enter-active,
+.success-leave-active {
+  transition: all $transition-base;
+}
+
+.success-enter-from,
+.success-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}

@@ -1,0 +1,47 @@
+// ============================================
+// TICKET DETAILS HEADER
+// ============================================
+
+@use '../../variables' as *;
+
+.ticket-header {
+  background: $white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+  margin-bottom: $spacing-xl;
+  animation: fadeInUp 0.5s ease 0.1s both;
+  padding: $spacing-lg;
+
+  @media (min-width: $desktop) {
+    padding: $spacing-xl;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    flex-wrap: wrap;
+  }
+
+  &__id {
+    font-family: $font-family-mono;
+    font-weight: 700;
+    background: linear-gradient(135deg, $primary 0%, $primary-dark 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.5rem;
+
+    @media (min-width: $desktop) {
+      font-size: 2rem;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $gray-900;
+    line-height: 1.3;
+  }
+}

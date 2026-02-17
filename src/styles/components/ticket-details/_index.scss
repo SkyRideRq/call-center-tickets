@@ -1,0 +1,39 @@
+// ============================================
+// TICKET DETAILS - Main Styles
+// ============================================
+
+@use '../../variables' as *;
+
+// Import component styles
+@use './breadcrumb';
+@use './header';
+@use './info';
+@use './status';
+@use './content';
+@use './not-found';
+
+.ticket-details {
+  // Content Layout
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+    animation: fadeInUp 0.5s ease 0.2s both;
+    @media (min-width: $desktop) {
+      grid-template-columns:  350px 1fr;
+    }
+  }
+
+  &__sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    @media (min-width: calc($desktop + 1px)) {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      display: block;
+      max-width: 350px;
+    }
+  }
+}
