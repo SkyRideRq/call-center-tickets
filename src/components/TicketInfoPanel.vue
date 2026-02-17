@@ -1,7 +1,7 @@
 <template>
   <div class="ticket-info">
     <h3 class="ticket-info__title">Informacje podstawowe</h3>
-    
+
     <div class="ticket-info__item">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
@@ -37,30 +37,9 @@
 </template>
 
 <script setup>
-defineProps({
-  ticket: {
-    type: Object,
-    required: true
-  }
-})
+import { useTicketHelpers } from '../composables/useTicketHelpers'
 
-const getPriorityLabel = (priority) => {
-  const labels = {
-    low: 'Niski',
-    medium: 'Średni',
-    high: 'Wysoki'
-  }
-  return labels[priority] || priority
-}
+defineProps({ ticket: { type: Object, required: true } })
 
-const formatFullDate = (dateString) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('pl-PL', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  })
-}
+const { getPriorityLabel, formatFullDate } = useTicketHelpers()
 </script>

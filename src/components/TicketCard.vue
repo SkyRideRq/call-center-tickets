@@ -3,17 +3,11 @@
     <div class="ticket-card__header">
       <div class="ticket-card__meta">
         <span class="ticket-card__id">#{{ ticket.id }}</span>
-        <span :class="[
-          'priority-badge',
-          `priority-badge--${ticket.priority}`
-        ]">
+        <span :class="['priority-badge', `priority-badge--${ticket.priority}`]">
           {{ getPriorityLabel(ticket.priority) }}
         </span>
       </div>
-      <span :class="[
-        'status-badge',
-        `status-badge--${ticket.status.replace('_', '-')}`
-      ]">
+      <span :class="['status-badge', `status-badge--${ticket.status.replace('_', '-')}`]">
         {{ getStatusLabel(ticket.status) }}
       </span>
     </div>
@@ -48,51 +42,10 @@
 </template>
 
 <script setup>
-defineProps({
-  ticket: {
-    type: Object,
-    required: true
-  }
-})
+import { useTicketHelpers } from '../composables/useTicketHelpers'
 
+defineProps({ ticket: { type: Object, required: true } })
 defineEmits(['click'])
 
-const getStatusLabel = (status) => {
-  const labels = {
-    new: 'Nowe',
-    in_progress: 'W trakcie',
-    closed: 'Zamknięte'
-  }
-  return labels[status] || status
-}
-
-const getPriorityLabel = (priority) => {
-  const labels = {
-    low: 'Niski',
-    medium: 'Średni',
-    high: 'Wysoki'
-  }
-  return labels[priority] || priority
-}
-
-const formatDate = (dateString) => {
-  const date = new Date(dateString)
-  const now = new Date()
-  const diffTime = Math.abs(now - date)
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-  
-  if (diffDays === 0 || diffDays === 1) {
-    return 'Dzisiaj'
-  } else if (diffDays === 2) {
-    return 'Wczoraj'
-  } else if (diffDays < 7) {
-    return `${diffDays} dni temu`
-  } else {
-    return date.toLocaleDateString('pl-PL', { 
-      day: '2-digit', 
-      month: '2-digit', 
-      year: 'numeric' 
-    })
-  }
-}
+const { getStatusLabel, getPriorityLabel, formatDate } = useTicketHelpers()
 </script>

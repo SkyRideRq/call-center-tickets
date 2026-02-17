@@ -19,30 +19,9 @@
 </template>
 
 <script setup>
-defineProps({
-  ticket: {
-    type: Object,
-    required: true
-  }
-})
+import { useTicketHelpers } from '../composables/useTicketHelpers'
 
-const getStatusLabel = (status) => {
-  const labels = {
-    new: 'Nowe',
-    in_progress: 'W trakcie',
-    closed: 'Zamknięte'
-  }
-  return labels[status] || status
-}
+defineProps({ ticket: { type: Object, required: true } })
 
-const formatFullDate = (dateString) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('pl-PL', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  })
-}
+const { getStatusLabel, formatFullDate } = useTicketHelpers()
 </script>
