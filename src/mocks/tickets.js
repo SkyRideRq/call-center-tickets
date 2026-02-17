@@ -6,7 +6,7 @@ export const mockTickets = [
       description: "Nie mogę się zalogować do systemu od wczoraj. Próbowałem zresetować hasło, ale nie otrzymuję emaila z linkiem.",
       priority: "high",
       status: "new",
-      createdAt: "2024-02-06T10:30:00"
+      createdAt: "2026-02-17T10:30:00"
     },
     {
       id: 2,
@@ -15,7 +15,7 @@ export const mockTickets = [
       description: "Na ostatniej fakturze widnieje nieprawidłowa kwota. Zamiast 150 zł jest 1500 zł.",
       priority: "high",
       status: "in_progress",
-      createdAt: "2024-02-07T09:15:00"
+      createdAt: "2026-02-16T09:15:00"
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ export const mockTickets = [
       description: "Czy jest możliwość eksportu danych do formatu CSV? Nie mogę znaleźć tej opcji w menu.",
       priority: "low",
       status: "closed",
-      createdAt: "2024-02-05T14:20:00"
+      createdAt: "2026-02-15T14:20:00"
     },
     {
       id: 4,
