@@ -3,10 +3,8 @@
     <div class="container">
       <TicketDetailsBreadcrumb @back="goBack" />
 
-      <!-- loader dopóki ticket === null (stan początkowy) -->
       <LoaderSpinner v-if="ticket === null" />
 
-      <!-- znaleziony ticket -->
       <template v-else-if="ticket">
         <TicketDetailsHeader :ticket="ticket" />
 
@@ -28,7 +26,6 @@
         </div>
       </template>
 
-      <!-- [ZMIANA] ticket === undefined – nie znaleziono lub błąd -->
       <TicketNotFound v-else-if="ticket === undefined" @back="goBack" />
     </div>
   </div>

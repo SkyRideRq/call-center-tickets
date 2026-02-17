@@ -103,13 +103,19 @@ export const useTicketsStore = defineStore('tickets', () => {
   ]
 
   // Actions
-  const fetchTickets = () => {
-    loading.value = true
-    setTimeout(() => {
-      tickets.value = mockTickets
-      loading.value = false
-    }, 1000)
+  
+  const loadTickets = () => {
+    return new Promise((resolve) => {
+      loading.value = true
+      setTimeout(() => {
+        tickets.value = mockTickets
+        loading.value = false
+        resolve()
+      }, 1000)
+    })
   }
+
+  const fetchTickets = () => loadTickets()
 
   const updateTicketStatus = (ticketId, newStatus) => {
     return new Promise((resolve) => {
@@ -123,16 +129,14 @@ export const useTicketsStore = defineStore('tickets', () => {
     })
   }
 
-  const fetchTicketById = (id) => {
-    loadingTicket.value = true
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        loadingTicket.value = false
-        resolve(tickets.value.find(t => t.id === parseInt(id)))
-      }, 1000)
-    })
-  }
 
+
+  const fetchTicketById = async (id) => {
+    if (tickets.value.length === 0) {
+      await loadTickets()
+    }
+    return tickets.value.find(t => t.id === parseInt(id))
+  }
   const setFilter = (filter) => {
     currentFilter.value = filter
   }
