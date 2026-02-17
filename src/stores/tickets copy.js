@@ -22,7 +22,7 @@ export const useTicketsStore = defineStore('tickets', () => {
   const simulateApiCall = async (callback) => {
     await new Promise(resolve => setTimeout(resolve, API_DELAY))
 
-    // symulacja błędu:
+    // możesz zasymulować losowy błąd:
     if (Math.random() < 0.2) throw new Error('Random API error')
 
     return callback()
